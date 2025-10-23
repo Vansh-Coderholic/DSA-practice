@@ -1,0 +1,58 @@
+Write a C program to implement addition and subtraction of rational numbers using Abstract Data Type(ADT).
+
+#include <stdio.h>
+typedef struct
+{
+    int num;
+    int den;
+}Rational;
+
+Rational makeRational(int num, int den)
+{
+    Rational r;
+    r.num = num;
+    r.den = den;
+    return r;
+}
+
+Rational addRational(Rational a, Rational b)
+{
+    Rational res;
+    res.num = a.num * b. den + b.num * a.den;
+    res.den = a.den * b.den;
+    return res;
+}
+
+Rational subtractRational(Rational a, Rational b)
+{
+    Rational res;
+    res.num = a.num * b.den - b.num * a.den;
+    res.den = a.den * b.den;
+    return res;
+}
+
+void printRational(Rational r)
+{
+    printf("%d/%d", r.num, r.den);
+}
+
+int main()
+{
+    Rational r1,r2,sum,diff;
+    printf("Enter first rational(a/b): ");
+    scanf("%d/%d", &r1.num,&r1.den);
+
+    printf("Enter second rational(a/b): ");
+    scanf("%d/%d",&r2.num,&r2.den);
+
+    sum = addRational(r1,r2);
+    diff = subtractRational(r1,r2);
+
+    printf("Addition: \n");
+    printRational(sum);
+    printf("Subtraction: \n");
+    printRational(diff);
+
+    return 0;
+
+}
