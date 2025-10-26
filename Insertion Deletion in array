@@ -1,0 +1,66 @@
+Write a C program to insert and delete a number from a given location in an array.
+
+#include <stdio.h>
+int main()
+{
+    int arr[100],n,pos,val,i,choice;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    do
+    {
+        printf("\n\n------MENU------\n");
+        printf("1.Insert element\n");
+        printf("2.Delete element\n");
+        printf("3.Display array\n");
+        printf("4.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+        case 1:
+            printf("Enter position to enter(1 to %d): ", n+1);
+            scanf("%d", &pos);
+            printf("Enter value to insert: ");
+            scanf("%d", &val);
+            for(i = n; i>=pos; i--)
+                arr[i] = arr[i - 1];
+            arr[pos - 1] = val;
+            n++;
+            printf("Element inserted succesfully");
+            break;
+
+        case 2:
+            printf("Enter position to delete(1 to %d): ", n);
+            scanf("%d", &pos);
+            for(i = pos - 1; i < n-1; i++)
+                arr[i] = arr[i + 1];
+            n--;
+            printf("Element deleted successfully");
+            break;
+
+        case 3:
+            printf("Current array: ");
+            for(i = 0; i < n; i++)
+                printf("%d", arr[i]);
+            printf("\n");
+            break;
+
+        case 4:
+            printf("Exiting program");
+            break;
+
+        default:
+            printf("Invalid choice!");
+        }
+    }
+    while(choice!= 4);
+
+    return 0;
+}
