@@ -1,0 +1,86 @@
+Write a C program to implement stack operations (PUSH and PEEK] using array.
+
+#include <stdio.h>
+#define MAX 100
+
+int stack[MAX];
+int top = -1;
+
+void push()
+{
+    int val;
+    if(top == MAX - 1)
+    {
+        printf("Stack is full! Cannot push element further.\n");
+    }
+    else
+    {
+        printf("Enter element to push: ");
+        scanf("%d", &val);
+        top++;
+        stack[top] = val;
+        printf("%d pushed into stack successfully.\n", val);
+    }
+}
+
+void peek()
+{
+    if(top == -1)
+    {
+        printf("Stack is empty.");
+    }
+    else
+    {
+        printf("Top element is: %d\n", stack[top]);
+    }
+}
+
+void display()
+{
+    if(top == -1)
+    {
+        printf("Stack is empty.\n");
+    }
+    else
+    {
+        printf("Current stack: ");
+        for(int i = top; i >= 0; i--)
+            printf("%d ",stack[i]);
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int choice;
+    do
+    {
+        printf("---MENU----\n");
+        printf("1.Push element\n");
+        printf("2.Peek element\n");
+        printf("3.Display Stack\n");
+        printf("4.Exit\n");
+        printf("Enter the choice: ");
+        scanf("%d",&choice);
+
+        switch(choice)
+        {
+        case 1:
+            push();
+            break;
+        case 2:
+            peek();
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            printf("Exiting program.\n");
+            break;
+        default:
+            printf("Invalid choice");
+        }
+    }
+    while(choice != 4);
+    return 0;
+}
