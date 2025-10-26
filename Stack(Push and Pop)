@@ -1,0 +1,87 @@
+Write a C program to implement stack operations (PUSH and POP) using array.
+
+#include <stdio.h>
+#define MAX 100
+
+int stack[MAX];
+int top = -1;
+
+void push()
+{
+    int val;
+    if(top == MAX - 1)
+    {
+        printf("Stack is full, cannot push element further.\n");
+    }
+    else
+    {
+        printf("Enter element to push in stack: ");
+        scanf("%d", &val);
+        top++;
+        stack[top] = val;
+        printf("%d pushed onto stack.\n", val);
+    }
+}
+
+void pop()
+{
+    if(top == -1)
+    {
+        printf("Stack underflow!No elements to pop.\n");
+    }
+    else
+    {
+        printf("Popped element!: %d\n",stack[top]);
+        top--;
+    }
+}
+
+void display()
+{
+    if(top == -1)
+    {
+        printf("Stack is empty.\n");
+    }
+    else
+    {
+        printf("Current stack: ");
+        for(int i = top; i >= 0; i--)
+            printf("%d ",stack[i]);
+            printf("\n");
+    }
+}
+
+int main()
+{
+    int choice;
+    do
+    {
+        printf("\n-----MENU-----\n");
+        printf("1.Push\n");
+        printf("2.Pop\n");
+        printf("3.Display\n");
+        printf("4.Exit\n");
+        printf("Enter your choice: \n");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+        case 1:
+            push();
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            printf("Exiting program.");
+            break;
+        default:
+            printf("Invalid choice.");
+        }
+    }
+    while(choice != 4);
+    return 0;
+}
